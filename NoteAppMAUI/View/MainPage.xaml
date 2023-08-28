@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NoteAppMaui"
+             x:Class="NoteAppMaui.MainPage"
+             xmlns:vm="clr-namespace:NoteAppMaui.ViewModel"
+             xmlns:model="clr-namespace:NoteAppMaui.Model"
+             x:DataType="vm:NotesViewModel"
+             NavigationPage.HasNavigationBar="False">
+
+
+    <Grid ColumnDefinitions="*, *" BackgroundColor="#6aeb6a">
+
+        <VerticalStackLayout Grid.Column="0">
+            <Label Text="Notes" FontSize="45" FontFamily="Kanit"  FontAttributes="Bold" Margin="5" TextColor="#31cc31"/>
+            <ListView ItemsSource="{Binding Notes}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type model:Note}">
+                        <TextCell Text="{Binding Title}" Detail="{Binding Detail}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Column="1"  Margin="10" Padding="10">
+            <Entry Placeholder="Title" Text="{Binding Note.Title}" PlaceholderColor="DimGray" FontAttributes="Bold" FontSize="20" TextColor="#fff200" Background="#5fde5f" Margin="5"/>
+            <Editor Placeholder="Detail" Text="{Binding Note.Detail}" PlaceholderColor="DimGray" FontAttributes="Bold" FontSize="22" TextColor="#fff200" Background="#5fde5f" HeightRequest="430" Margin="1"/>
+            <Button Text="Save" FontAttributes="Bold" FontFamily="Kanit" FontSize="18" Command="{Binding SaveCommand}"/>
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>
