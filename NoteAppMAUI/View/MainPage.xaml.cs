@@ -7,8 +7,7 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-		//BindingContext = new MainViewModel();
-        BindingContext = new NotesViewModel();
-    }
+        	BindingContext = new NotesViewModel();
+    	}
 }
 
